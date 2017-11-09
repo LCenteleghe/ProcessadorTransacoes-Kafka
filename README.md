@@ -1,1 +1,0 @@
-# ProcessadorTransacoes-Kafka
