@@ -5,7 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
+import org.springframework.util.concurrent.FailureCallback;
+import org.springframework.util.concurrent.ListenableFutureCallback;
+import org.springframework.util.concurrent.SuccessCallback;
 
 import br.edu.unisinos.processadortransacoes.model.TransacaoCartao;
 
@@ -25,6 +29,23 @@ public class TransacoesCartoesKafkaProducer {
 				"Enviando mensagem='{}' para o tópico='{}'",
 				transacaoCartao,
 				topicoTransacoesCartoes);
-		kafkaTemplate.send(topicoTransacoesCartoes, transacaoCartao.getCodigo(), transacaoCartao);
+		kafkaTemplate.send(topicoTransacoesCartoes, transacaoCartao.getCodigo(), transacaoCartao)
+				.addCallback(createCallBackListener());
+	}
+
+	private ListenableFutureCallback<? super SendResult<Long, TransacaoCartao>> createCallBackListener() {
+		return new ListenableFutureCallback<SendResult<Long, TransacaoCartao>>() {
+
+			@Override
+			public void onSuccess(SendResult<Long, TransacaoCartao> result) {
+				TransacaoCartao transacaoCartaoEnviada = result.getProducerRecord().value();
+				LOGGER.info("Transação enviada ao tópico com sucesso. Dados transação: {}", transacaoCartaoEnviada);
+			}
+
+			@Override
+			public void onFailure(Throwable ex) {
+				LOGGER.error("Um erro ocorreu ao enviar uma transação para o tópico.", ex);
+			}
+		};
 	}
 }
