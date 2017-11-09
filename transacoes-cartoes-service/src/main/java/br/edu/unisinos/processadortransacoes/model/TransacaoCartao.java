@@ -52,4 +52,18 @@ public class TransacaoCartao {
 		this.estabelecimento = estabelecimento;
 	}
 
+	@Override
+	public String toString() {
+		return "TransacaoCartao [codigo="
+				+ codigo
+				+ ", numeroCartao="
+				+ numeroCartao
+				+ ", valor="
+				+ valor
+				+ ", data="
+				+ data
+				+ ", estabelecimento="
+				+ estabelecimento
+				+ "]";
+	}
 }

@@ -37,4 +37,18 @@ public class Endereco {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+
+	@Override
+	public String toString() {
+		return "Endereco [cidade="
+				+ cidade
+				+ ", estado="
+				+ estado
+				+ ", pais="
+				+ pais
+				+ ", cep="
+				+ cep
+				+ "]";
+	}
+
 }

@@ -19,4 +19,9 @@ public class Estabelecimento {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+	@Override
+	public String toString() {
+		return "Estabelecimento [nome=" + nome + ", endereco=" + endereco + "]";
+	}
 }
