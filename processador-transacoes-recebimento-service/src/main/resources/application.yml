@@ -1,0 +1,4 @@
+kafka:
+  bootstrap-servers: localhost:9092
+  topics:
+    transacoes-cartoes: transacoes-cartoes
