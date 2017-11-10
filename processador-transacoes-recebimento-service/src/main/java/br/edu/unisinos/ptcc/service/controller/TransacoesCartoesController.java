@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.unisinos.processadortransacoes.model.TransacaoCartao;
 import br.edu.unisinos.ptcc.kafka.producer.TransacoesCartoesKafkaProducer;
+import br.edu.unisinos.ptcc.model.TransacaoCartao;
 
 @RestController
 public class TransacoesCartoesController {

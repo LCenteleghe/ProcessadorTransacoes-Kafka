@@ -15,7 +15,8 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
-import br.edu.unisinos.processadortransacoes.model.TransacaoCartao;
+import br.edu.unisinos.ptcc.model.TransacaoCartao;
+
 
 @EnableKafka
 @Configuration

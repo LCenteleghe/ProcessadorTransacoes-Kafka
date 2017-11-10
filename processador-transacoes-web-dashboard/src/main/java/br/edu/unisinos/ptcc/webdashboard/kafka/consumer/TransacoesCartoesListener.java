@@ -8,7 +8,8 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
-import br.edu.unisinos.processadortransacoes.model.TransacaoCartao;
+import br.edu.unisinos.ptcc.model.TransacaoCartao;
+
 
 @Component
 public class TransacoesCartoesListener {

@@ -9,7 +9,8 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-import br.edu.unisinos.processadortransacoes.model.TransacaoCartao;
+import br.edu.unisinos.ptcc.model.TransacaoCartao;
+
 
 @Component
 public class TransacoesCartoesKafkaProducer {
