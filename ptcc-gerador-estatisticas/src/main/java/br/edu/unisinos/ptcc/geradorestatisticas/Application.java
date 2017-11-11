@@ -23,7 +23,7 @@ public class Application {
 		config.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 5000);
 
 		StreamsBuilder builder = new StreamsBuilder();
-		KStream<String, TransacaoCartao> transacoesCartoes = builder. stream("transacoes-cartoes");
+		KStream<String, TransacaoCartao> transacoesCartoes = builder.stream("transacoes-cartoes");
 		
 		transacoesCartoes
 				.groupBy((k, v) -> v.getEstabelecimento().getTipoEstabelecimento().name())
