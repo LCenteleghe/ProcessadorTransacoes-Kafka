@@ -18,7 +18,7 @@ public class Application {
 	public static void main(final String[] args) throws Exception {
 		Properties config = new Properties();
 		config.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties"));
-		config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.StringSerde.class);
+		config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 		config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, TransacaoCartaoSerdes.class);
 		config.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 5000);
 
