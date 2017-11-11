@@ -43,7 +43,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>br.edu.unisinos.processadortransacoes.Application</mainClass>
+							<mainClass>br.edu.unisinos.ptcc.service.Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
