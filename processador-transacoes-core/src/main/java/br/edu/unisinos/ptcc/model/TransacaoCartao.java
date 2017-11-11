@@ -3,17 +3,17 @@ package br.edu.unisinos.ptcc.model;
 import java.util.Date;
 
 public class TransacaoCartao {
-	private Long codigo;
+	private String codigo;
 	private Long numeroCartao;
 	private Double valor;
 	private Date data;
 	private Estabelecimento estabelecimento;
 
-	public Long getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Long codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 

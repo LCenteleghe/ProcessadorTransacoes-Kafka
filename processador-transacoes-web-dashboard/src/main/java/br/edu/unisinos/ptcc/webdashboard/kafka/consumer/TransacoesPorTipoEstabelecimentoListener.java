@@ -12,9 +12,9 @@ import br.edu.unisinos.ptcc.model.TransacaoCartao;
 
 
 @Component
-public class TransacoesCartoesListener {
+public class TransacoesPorTipoEstabelecimentoListener {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(TransacoesCartoesListener.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TransacoesPorTipoEstabelecimentoListener.class);
 
 	@Value(value = "${websocket.mensagens.novas-transacoes}")
 	private String destinationMessagesOut;
@@ -22,7 +22,7 @@ public class TransacoesCartoesListener {
 	@Autowired
 	private SimpMessagingTemplate simpleMessageTemplate;
 
-	@KafkaListener(topics = "${kafka.topics.transacoes-cartoes}", containerFactory = "transacoesCartoesListenerContainerFactory")
+	@KafkaListener(topics = "${kafka.topics.transacoes-cartoes}", containerFactory = "transacoesPorTipoEstabelecimentoListenerContainerFactory-")
 	public void receive(TransacaoCartao transacao) {
 		LOGGER.info("Transacao recebida='{}'", transacao);
 		simpleMessageTemplate.convertAndSend(destinationMessagesOut, transacao);

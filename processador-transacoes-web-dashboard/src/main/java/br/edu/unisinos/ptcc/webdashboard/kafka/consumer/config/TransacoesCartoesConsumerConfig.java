@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.LongDeserializer;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,21 +21,21 @@ import br.edu.unisinos.ptcc.model.TransacaoCartao;
 
 @EnableKafka
 @Configuration
-public class KafkaConsumerConfig {
+public class TransacoesCartoesConsumerConfig {
 
     @Value(value = "${kafka.bootstrap-servers}")
     private String bootstrapServers;
 
-    public ConsumerFactory<Long, TransacaoCartao> consumerFactory(String groupId) {
+    public ConsumerFactory<String, TransacaoCartao> consumerFactory(String groupId) {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
-        return new DefaultKafkaConsumerFactory<>(props, new LongDeserializer(), new JsonDeserializer<>(TransacaoCartao.class));
+        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(TransacaoCartao.class));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<Long, TransacaoCartao> rawKafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<Long, TransacaoCartao> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, TransacaoCartao> transacoesCartoesListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, TransacaoCartao> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory("dashboard-transacoes"));
 
         return factory;

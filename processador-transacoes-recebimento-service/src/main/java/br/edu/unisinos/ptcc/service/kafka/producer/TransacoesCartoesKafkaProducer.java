@@ -21,7 +21,7 @@ public class TransacoesCartoesKafkaProducer {
 	private String topicoTransacoesCartoes;
 
 	@Autowired
-	private KafkaTemplate<Long, TransacaoCartao> kafkaTemplate;
+	private KafkaTemplate<String, TransacaoCartao> kafkaTemplate;
 
 	public void send(TransacaoCartao transacaoCartao) {
 		LOGGER.info(
@@ -32,11 +32,11 @@ public class TransacoesCartoesKafkaProducer {
 				.addCallback(createCallBackListener());
 	}
 
-	private ListenableFutureCallback<? super SendResult<Long, TransacaoCartao>> createCallBackListener() {
-		return new ListenableFutureCallback<SendResult<Long, TransacaoCartao>>() {
+	private ListenableFutureCallback<? super SendResult<String, TransacaoCartao>> createCallBackListener() {
+		return new ListenableFutureCallback<SendResult<String, TransacaoCartao>>() {
 
 			@Override
-			public void onSuccess(SendResult<Long, TransacaoCartao> result) {
+			public void onSuccess(SendResult<String, TransacaoCartao> result) {
 				TransacaoCartao transacaoCartaoEnviada = result.getProducerRecord().value();
 				LOGGER.info("Transação enviada ao tópico com sucesso. Dados transação: {}", transacaoCartaoEnviada);
 			}
