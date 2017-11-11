@@ -2,12 +2,12 @@ kafka:
   bootstrap-servers: 35.192.50.141:9092,35.199.126.12:9092,35.194.132.53:9092
   topics:
     transacoes-cartoes: transacoes-cartoes
-    transacoes-por-tipo-estabelecimento: estatisticas-transacoes-por-tipo-estabelecimento
+    valor-transacoes-por-tipo-estabelecimento: valor-transacoes-por-tipo-estabelecimento
 
 websocket:
   mensagens:
    novas-transacoes: /dashboard/novas-transacoes
-   out: /dashboard/stream-out
+   valor-transacoes-por-tipo-estabelecimento: /dashboard/valor-transacoes-por-tipo-estabelecimento
   broker: /dashboard
   prefix: /app
   endpoint: /dashboard-websocket-endpoint

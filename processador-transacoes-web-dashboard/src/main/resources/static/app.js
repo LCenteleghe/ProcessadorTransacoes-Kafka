@@ -22,6 +22,10 @@ function connect() {
         stompClient.subscribe('/dashboard/novas-transacoes', function (message) {
             showMessage(message.body);
         });
+        
+        stompClient.subscribe('/dashboard/valor-transacoes-por-tipo-estabelecimento', function (message) {
+            showMessage(message.body);
+        });
     });
 }
 
@@ -34,9 +38,8 @@ function disconnect() {
 }
 
 function showMessage(message) {
-
     countMessages++;
-    $("#stream").append("<tr><td><pre>" + JSON.stringify(JSON.parse(message), undefined, 2) + "</pre></td></tr>");
+    $("#stream").prepend("<tr><td><pre>" + JSON.stringify(JSON.parse(message), undefined, 2) + "</pre></td></tr>");
     if(countMessages > 10){
         // console.log(countMessages);
         $("#stream tr:first").remove();
