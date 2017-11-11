@@ -5,6 +5,7 @@ public class Endereco {
 	private String estado;
 	private String pais;
 	private String cep;
+	private String logradouro;
 
 	public String getCidade() {
 		return cidade;
@@ -38,17 +39,16 @@ public class Endereco {
 		this.cep = cep;
 	}
 
-	@Override
-	public String toString() {
-		return "Endereco [cidade="
-				+ cidade
-				+ ", estado="
-				+ estado
-				+ ", pais="
-				+ pais
-				+ ", cep="
-				+ cep
-				+ "]";
+	public String getLogradouro() {
+		return logradouro;
 	}
 
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	@Override
+	public String toString() {
+		return "Endereco [cidade=" + cidade + ", estado=" + estado + ", pais=" + pais + ", cep=" + cep + ", logradouro=" + logradouro + "]";
+	}
 }

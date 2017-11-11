@@ -1,0 +1,17 @@
+{
+    "codigo": 13211543345,
+    "numeroCartao": 44454242,
+    "valor": 45.6,
+    "data": 1510408319788,
+    "estabelecimento": {
+        "nome": "Farmácia ABC",
+        "endereco": {
+            "cidade": "Porto Alegre",
+            "estado": "RS",
+            "pais": "Brasil",
+            "cep": "9220000",
+            "logradouro": "Rua A, 454"
+        },
+        "tipoEstabelecimento": "FARMACIA"
+    }
+}

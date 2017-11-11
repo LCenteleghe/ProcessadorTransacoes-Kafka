@@ -1,4 +1,4 @@
-package br.edu.unisinos.ptcc.kafka.producer.config;
+package br.edu.unisinos.ptcc.service.kafka.producer.config;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -5,7 +5,7 @@ import java.util.Date;
 public class TransacaoCartao {
 	private Long codigo;
 	private Long numeroCartao;
-	private Long valor;
+	private Double valor;
 	private Date data;
 	private Estabelecimento estabelecimento;
 
@@ -25,11 +25,11 @@ public class TransacaoCartao {
 		this.numeroCartao = numeroCartao;
 	}
 
-	public Long getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
-	public void setValor(Long valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 
@@ -51,16 +51,6 @@ public class TransacaoCartao {
 
 	@Override
 	public String toString() {
-		return "TransacaoCartao [codigo="
-				+ codigo
-				+ ", numeroCartao="
-				+ numeroCartao
-				+ ", valor="
-				+ valor
-				+ ", data="
-				+ data
-				+ ", estabelecimento="
-				+ estabelecimento
-				+ "]";
+		return "TransacaoCartao [codigo=" + codigo + ", numeroCartao=" + numeroCartao + ", valor=" + valor + ", data=" + data + ", estabelecimento=" + estabelecimento + "]";
 	}
 }

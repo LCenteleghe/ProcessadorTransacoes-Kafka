@@ -1,4 +1,4 @@
-package br.edu.unisinos.ptcc;
+package br.edu.unisinos.ptcc.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

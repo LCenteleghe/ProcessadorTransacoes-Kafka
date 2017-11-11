@@ -1,6 +1,5 @@
 kafka:
-  bootstrap-servers: localhost:9092
-  bkp: 35.192.50.141:9092,35.199.126.12:9092,35.194.132.53:9092
+  bootstrap-servers: 35.192.50.141:9092,35.199.126.12:9092,35.194.132.53:9092
   topics:
     transacoes-cartoes: transacoes-cartoes
 
@@ -13,4 +12,4 @@ websocket:
   endpoint: /dashboard-websocket-endpoint
   
 server:
-  port: 8085
+  port: 80

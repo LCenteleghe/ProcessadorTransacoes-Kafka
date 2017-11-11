@@ -1,4 +1,4 @@
-package br.edu.unisinos.ptccwebdashboard.kafka.consumer.config;
+package br.edu.unisinos.ptcc.webdashboard.kafka.consumer.config;
 
 
 import java.util.HashMap;

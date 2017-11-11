@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.unisinos.ptcc.kafka.producer.TransacoesCartoesKafkaProducer;
 import br.edu.unisinos.ptcc.model.TransacaoCartao;
+import br.edu.unisinos.ptcc.service.kafka.producer.TransacoesCartoesKafkaProducer;
 
 @RestController
 public class TransacoesCartoesController {
@@ -19,7 +19,7 @@ public class TransacoesCartoesController {
 
 	@RequestMapping(value = "/transacoes-cartoes", method = RequestMethod.POST)
 	public ResponseEntity<TransacaoCartao> registrar(@RequestBody TransacaoCartao transacaoCartao) {
-		transacoesCartoesProducer.send(transacaoCartao);
+		transacoesCartoesProducer.send(transacaoCartao);		
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
 }

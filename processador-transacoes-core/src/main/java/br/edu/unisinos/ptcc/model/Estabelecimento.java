@@ -3,6 +3,7 @@ package br.edu.unisinos.ptcc.model;
 public class Estabelecimento {
 	private String nome;
 	private Endereco endereco;
+	private TipoEstabelecimento tipoEstabelecimento;
 
 	public String getNome() {
 		return nome;
@@ -20,8 +21,16 @@ public class Estabelecimento {
 		this.endereco = endereco;
 	}
 
+	public TipoEstabelecimento getTipoEstabelecimento() {
+		return tipoEstabelecimento;
+	}
+
+	public void setTipoEstabelecimento(TipoEstabelecimento tipoEstabelecimento) {
+		this.tipoEstabelecimento = tipoEstabelecimento;
+	}
+
 	@Override
 	public String toString() {
-		return "Estabelecimento [nome=" + nome + ", endereco=" + endereco + "]";
+		return "Estabelecimento [nome=" + nome + ", endereco=" + endereco + ", tipoEstabelecimento=" + tipoEstabelecimento + "]";
 	}
 }
