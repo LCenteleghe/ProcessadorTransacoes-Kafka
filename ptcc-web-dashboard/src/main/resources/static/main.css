@@ -12,3 +12,7 @@ body {
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
+
+#totais-div span {
+    margin-right: 10px;
+}

@@ -20,11 +20,11 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/dashboard/novas-transacoes', function (message) {
-            showMessage(message.body);
+            showTransacao(message.body);
         });
         
         stompClient.subscribe('/dashboard/valor-transacoes-por-tipo-estabelecimento', function (message) {
-            showMessage(message.body);
+            showTotal(message.body);
         });
     });
 }
@@ -37,12 +37,32 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-function showMessage(message) {
+function showTotal(message) {
+    message = JSON.parse(message);
+    var key = Object.keys(message)[0];
+    key = key.toLowerCase();
+    var valor = Object.values(message)[0];
+    if ($("#span-" + key).length > 0) {
+        $("#span-" + key).text(key + ": " + valor);
+    } else {
+        $("#totais-div").append("<span id=\"span-" + key + "\" class=\"label label-primary text-uppercase\">" + key + ": " + valor + "</span>");
+    } 
+}
+
+function showTransacao(message) {
+    message = JSON.parse(message);
+    var data = new Date(message.data);
+    var html = "<tr>";
+    html += "<td>" + message.codigo + "</td>";
+    html += "<td>" + message.numeroCartao + "</td>";
+    html += "<td>" + message.valor + "</td>";
+    html += "<td>" + data.getDate() + "/" + data.getMonth() + "/" + data.getFullYear() + " " + data.getHours() + ":" + data.getMinutes() + "</td>";
+    html += "<td>" + message.estabelecimento.nome + " - " + message.estabelecimento.endereco.cidade + " (" + message.estabelecimento.tipoEstabelecimento + ")" + "</td>";
+    html += "</tr>";
+    $("#transacoes-tbody").append(html);
     countMessages++;
-    $("#stream").prepend("<tr><td><pre>" + JSON.stringify(JSON.parse(message), undefined, 2) + "</pre></td></tr>");
     if(countMessages > 10){
-        // console.log(countMessages);
-        $("#stream tr:first").remove();
+        $("#transacoes-tbody tr:first").remove();
     }
 }
 
@@ -53,4 +73,3 @@ $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
 });
-

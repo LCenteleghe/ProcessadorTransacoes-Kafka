@@ -16,24 +16,33 @@
 			<div class="col-md-6">
 				<form class="form-inline">
 					<div class="form-group">
-						<label for="connect">Conexão com o broker:</label>
+						<label for="connect">Conexao com o broker:</label>
 						<button id="connect" class="btn btn-default" type="submit">Conectar</button>
-						<button id="disconnect" class="btn btn-default" type="submit"
-							disabled="disabled">Descontectar</button>
+						<button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Descontectar</button>
 					</div>
 				</form>
 			</div>
 		</div>
 		<div class="row">
+		    <div class="col-md-12">
+		        <h3>Totais Por Estabelecimento</h3>
+			    <div id="totais-div" class="col-md-12"></div>
+		    </div>
+		</div>
+		<div class="row">
 			<div class="col-md-12">
-				<table id="conversation" class="table table-striped">
-					<thead>
-						<tr>
-							<th>Transações</th>
-						</tr>
-					</thead>
-						<tbody id="stream">
-					</tbody>
+			    <h3>Transacoes</h3>
+				<table id="transacoes-table" class="table table-striped table-condensed">
+				    <thead>
+				        <tr>
+				            <td>Codigo</td>
+				            <td>Cartao</td>
+				            <td>Valor</td>
+				            <td>Data</td>
+				            <td>Estabelecimento</td>
+				        </tr>
+				    </thead>
+					<tbody id="transacoes-tbody"></tbody>
 				</table>
 			</div>
 		</div>
