@@ -16,3 +16,17 @@ body {
 #totais-div span {
     margin-right: 10px;
 }
+
+.btn-outline-success {
+    color: #5cb85c;
+    background-image: none;
+    background-color: transparent;
+    border-color: #5cb85c;
+}
+
+.btn-outline-danger {
+    color: #d9534f;
+    background-image: none;
+    background-color: transparent;
+    border-color: #d9534f;
+}

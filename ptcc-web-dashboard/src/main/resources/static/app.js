@@ -59,6 +59,8 @@ function showTransacao(message) {
     html += "<td>" + data.getDate() + "/" + data.getMonth() + "/" + data.getFullYear() + " " + data.getHours() + ":" + data.getMinutes() + "</td>";
     html += "<td>" + message.estabelecimento.nome + " - " + message.estabelecimento.endereco.cidade + " (" + message.estabelecimento.tipoEstabelecimento + ")" + "</td>";
     html += "</tr>";
+
+    console.log(html);
     $("#transacoes-tbody").append(html);
     countMessages++;
     if(countMessages > 10){
