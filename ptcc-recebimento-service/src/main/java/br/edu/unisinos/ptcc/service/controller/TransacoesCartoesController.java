@@ -13,13 +13,13 @@ import br.edu.unisinos.ptcc.service.kafka.producer.TransacoesCartoesKafkaProduce
 
 @RestController
 public class TransacoesCartoesController {
-	
-	@Autowired
-	private TransacoesCartoesKafkaProducer transacoesCartoesProducer;
 
-	@RequestMapping(value = "/transacoes-cartoes", method = RequestMethod.POST)
-	public ResponseEntity<TransacaoCartao> registrar(@RequestBody TransacaoCartao transacaoCartao) {
-		transacoesCartoesProducer.send(transacaoCartao);		
-		return new ResponseEntity<>(HttpStatus.ACCEPTED);
-	}
+    @Autowired
+    private TransacoesCartoesKafkaProducer transacoesCartoesProducer;
+
+    @RequestMapping(value = "/transacoes-cartoes", method = RequestMethod.POST)
+    public ResponseEntity<TransacaoCartao> registrar(@RequestBody TransacaoCartao transacaoCartao) {
+        transacoesCartoesProducer.send(transacaoCartao);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
 }
