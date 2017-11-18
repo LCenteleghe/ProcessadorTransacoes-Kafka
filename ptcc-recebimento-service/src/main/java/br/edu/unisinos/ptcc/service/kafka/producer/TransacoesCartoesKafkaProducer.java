@@ -11,40 +11,36 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import br.edu.unisinos.ptcc.model.TransacaoCartao;
 
-
 @Component
 public class TransacoesCartoesKafkaProducer {
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(TransacoesCartoesKafkaProducer.class);
 
-	@Value("${kafka.topics.transacoes-cartoes}")
-	private String topicoTransacoesCartoes;
+    private static final Logger LOGGER = LoggerFactory
+            .getLogger(TransacoesCartoesKafkaProducer.class);
 
-	@Autowired
-	private KafkaTemplate<String, TransacaoCartao> kafkaTemplate;
+    @Value("${kafka.topics.transacoes-cartoes}")
+    private String topicoTransacoesCartoes;
 
-	public void send(TransacaoCartao transacaoCartao) {
-		LOGGER.info(
-				"Enviando mensagem='{}' para o tópico='{}'",
-				transacaoCartao,
-				topicoTransacoesCartoes);
-		kafkaTemplate.send(topicoTransacoesCartoes, transacaoCartao.getCodigo(), transacaoCartao)
-				.addCallback(createCallBackListener());
-	}
+    @Autowired
+    private KafkaTemplate<String, TransacaoCartao> kafkaTemplate;
 
-	private ListenableFutureCallback<? super SendResult<String, TransacaoCartao>> createCallBackListener() {
-		return new ListenableFutureCallback<SendResult<String, TransacaoCartao>>() {
+    public void send(TransacaoCartao transacaoCartao) {
+        LOGGER.info("Enviando mensagem='{}' para o tópico='{}'", transacaoCartao, topicoTransacoesCartoes);
+        kafkaTemplate.send(topicoTransacoesCartoes, transacaoCartao.getCodigo(), transacaoCartao).addCallback(createCallBackListener());
+    }
 
-			@Override
-			public void onSuccess(SendResult<String, TransacaoCartao> result) {
-				TransacaoCartao transacaoCartaoEnviada = result.getProducerRecord().value();
-				LOGGER.info("Transação enviada ao tópico com sucesso. Dados transação: {}", transacaoCartaoEnviada);
-			}
+    private ListenableFutureCallback<? super SendResult<String, TransacaoCartao>> createCallBackListener() {
+        return new ListenableFutureCallback<SendResult<String, TransacaoCartao>>() {
 
-			@Override
-			public void onFailure(Throwable ex) {
-				LOGGER.error("Um erro ocorreu ao enviar uma transação para o tópico.", ex);
-			}
-		};
-	}
+            @Override
+            public void onSuccess(SendResult<String, TransacaoCartao> result) {
+                TransacaoCartao transacaoCartaoEnviada = result.getProducerRecord().value();
+                LOGGER.info("Transação enviada ao tópico com sucesso. Dados transação: {}", transacaoCartaoEnviada);
+            }
+
+            @Override
+            public void onFailure(Throwable ex) {
+                LOGGER.error("Um erro ocorreu ao enviar uma transação para o tópico.", ex);
+            }
+        };
+    }
 }
