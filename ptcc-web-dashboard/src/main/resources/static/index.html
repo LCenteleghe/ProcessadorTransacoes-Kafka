@@ -18,43 +18,45 @@
 					<div class="form-group">
 						<label for="connect">Conexao com o broker:</label>
 						<button id="connect" class="btn btn-outline-success" type="submit">Conectar</button>
-						<button id="disconnect" class="btn btn-outline-danger" type="submit" disabled="disabled">Desconectar</button>
+						<button id="disconnect" class="btn btn-outline-danger"
+							type="submit" disabled="disabled">Desconectar</button>
 					</div>
 				</form>
 			</div>
 		</div>
 		<div class="row">
-		    <div class="col-md-12">
-		        <h3>Totais Por Estabelecimento</h3>
-			    <div id="totais-div" class="col-md-12"></div>
-		    </div>
-		</div>
-		<div class="row">
-		    <div class="col-md-12" id="aprovadas-reprovadas-div">
-		    	<h3>Totais por Status</h3>
-		        <div class="bs-callout bs-callout-success col-md-4">
-				  <h4>Total aprovadas</h4>
-				  <span id="total-aprovadas"></span>
+			<div class="col-md-12" id="aprovadas-reprovadas-div">
+				<h3>Totais por Status</h3>
+				<div class="bs-callout bs-callout-success col-md-4">
+					<h4>Total aprovadas</h4>
+					<span id="total-aprovadas"></span>
 				</div>
-			    <div class="bs-callout bs-callout-danger col-md-4">
-			        <h4>Total reprovadas</h4>
-				    <span id="total-reprovadas"></span>
-			    </div>
-		    </div>
+				<div class="bs-callout bs-callout-danger col-md-4">
+					<h4>Total reprovadas</h4>
+					<span id="total-reprovadas"></span>
+				</div>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-			    <h3>Transacoes</h3>
-				<table id="transacoes-table" class="table table-striped table-condensed table-bordered table-responsive">
-				    <thead>
-				        <tr>
-				            <th>Codigo</th>
-				            <th>Cartao</th>
-				            <th>Valor</th>
-				            <th>Data</th>
-				            <th>Estabelecimento</th>
-				        </tr>
-				    </thead>
+				<h3>Totais por Estabelecimento</h3>
+				<div id="totais-div" class="col-md-12"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Transacoes</h3>
+				<table id="transacoes-table"
+					class="table table-striped table-condensed table-bordered table-responsive">
+					<thead>
+						<tr>
+							<th>Codigo</th>
+							<th>Cartao</th>
+							<th>Valor</th>
+							<th>Data</th>
+							<th>Estabelecimento</th>
+						</tr>
+					</thead>
 					<tbody id="transacoes-tbody"></tbody>
 				</table>
 			</div>

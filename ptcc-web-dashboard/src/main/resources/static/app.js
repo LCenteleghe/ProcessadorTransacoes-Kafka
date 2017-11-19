@@ -75,8 +75,14 @@ function showAprovadasReprovadas(message) {
     message = JSON.parse(message);
 
     $('#aprovadas-reprovadas-div').show();
-    $('#aprovadas-reprovadas-div #total-aprovadas').html(message.totalAprovadas);
-    $('#aprovadas-reprovadas-div #total-reprovadas').html(message.totalReprovadas);
+
+    if(message.hasOwnProperty('transacoes-aprovadas')){
+         $('#aprovadas-reprovadas-div #total-aprovadas').html(message['transacoes-aprovadas']);
+    }
+
+    if(message.hasOwnProperty('transacoes-reprovadas')){
+         $('#aprovadas-reprovadas-div #total-reprovadas').html(message['transacoes-reprovadas']);
+    }
 }
 
 $(function () {

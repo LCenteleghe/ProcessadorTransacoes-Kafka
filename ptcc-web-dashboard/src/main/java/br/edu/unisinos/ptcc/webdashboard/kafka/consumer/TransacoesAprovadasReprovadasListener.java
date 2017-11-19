@@ -1,7 +1,7 @@
 package br.edu.unisinos.ptcc.webdashboard.kafka.consumer;
 
-import br.edu.unisinos.ptcc.model.TipoEstabelecimento;
 import java.util.AbstractMap;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
