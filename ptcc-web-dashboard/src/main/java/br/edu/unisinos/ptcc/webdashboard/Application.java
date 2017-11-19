@@ -1,5 +1,6 @@
 package br.edu.unisinos.ptcc.webdashboard;
 
+import br.edu.unisinos.ptcc.webdashboard.kafka.consumer.TransacoesAprovadasReprovadasListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -22,5 +23,10 @@ public class Application {
 	@Bean
 	public TransacoesPorTipoEstabelecimentoListener transacoesPorTipoEstabelecimentoListener() {
 		return new TransacoesPorTipoEstabelecimentoListener();
+	}
+        
+	@Bean
+	public TransacoesAprovadasReprovadasListener transacoesAprovadasReprovadasListener() {
+		return new TransacoesAprovadasReprovadasListener();
 	}
 }
