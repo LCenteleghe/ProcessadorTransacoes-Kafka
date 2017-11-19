@@ -15,4 +15,4 @@ websocket:
   endpoint: /dashboard-websocket-endpoint
   
 server:
-  port: 80
+  port: 8080
