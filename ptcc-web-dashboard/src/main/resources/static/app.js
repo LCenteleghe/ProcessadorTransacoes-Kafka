@@ -26,6 +26,10 @@ function connect() {
         stompClient.subscribe('/dashboard/valor-transacoes-por-tipo-estabelecimento', function (message) {
             showTotal(message.body);
         });
+
+        stompClient.subscribe('/dashboard/total-aprovadas-reprovadas', function (message) {
+            showAprovadasReprovadas(message.body);
+        });
     });
 }
 
@@ -60,12 +64,19 @@ function showTransacao(message) {
     html += "<td>" + message.estabelecimento.nome + " - " + message.estabelecimento.endereco.cidade + " (" + message.estabelecimento.tipoEstabelecimento + ")" + "</td>";
     html += "</tr>";
 
-    console.log(html);
     $("#transacoes-tbody").append(html);
     countMessages++;
     if(countMessages > 10){
         $("#transacoes-tbody tr:first").remove();
     }
+}
+
+function showAprovadasReprovadas(message) {
+    message = JSON.parse(message);
+
+    $('#aprovadas-reprovadas-div').show();
+    $('#aprovadas-reprovadas-div #total-aprovadas').html(message.totalAprovadas);
+    $('#aprovadas-reprovadas-div #total-reprovadas').html(message.totalReprovadas);
 }
 
 $(function () {
