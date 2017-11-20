@@ -1,5 +1,6 @@
 var stompClient = null;
-var countMessages = 0;
+var countTransacoesNovas = 0;
+var countTransacoesProcessadas = 0;
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -28,7 +29,15 @@ function connect() {
         });
 
         stompClient.subscribe('/dashboard/total-aprovadas-reprovadas', function (message) {
-            showAprovadasReprovadas(message.body);
+        	showTotalAprovadasReprovadas(message.body);
+        });
+        
+        stompClient.subscribe('/dashboard/transacoes-aprovadas', function (message) {
+        	showTransacaoProcessada(message.body, true);
+        });
+        
+        stompClient.subscribe('/dashboard/transacoes-reprovadas', function (message) {
+        	showTransacaoProcessada(message.body, false);
         });
     });
 }
@@ -64,14 +73,34 @@ function showTransacao(message) {
     html += "<td>" + message.estabelecimento.nome + " - " + message.estabelecimento.endereco.cidade + " (" + message.estabelecimento.tipoEstabelecimento + ")" + "</td>";
     html += "</tr>";
 
-    $("#transacoes-tbody").append(html);
-    countMessages++;
-    if(countMessages > 10){
-        $("#transacoes-tbody tr:first").remove();
+    $("#transacoes-tbody").prepend(html);
+    countTransacoesNovas++;
+    if(countTransacoesNovas > 10){
+        $("#transacoes-tbody tr:last").remove();
     }
 }
 
-function showAprovadasReprovadas(message) {
+
+function showTransacaoProcessada(message, aprovada) {
+    message = JSON.parse(message);
+    var data = new Date(message.data);
+    var html = "<tr style='color:"+ (aprovada?'#5cb85c':'#d9534f') +";'>";
+    html += "<td>" + message.codigo + "</td>";
+    html += "<td>" + message.numeroCartao + "</td>";
+    html += "<td>" + message.valor + "</td>";
+    html += "<td>" + data.getDate() + "/" + data.getMonth() + "/" + data.getFullYear() + " " + data.getHours() + ":" + data.getMinutes() + "</td>";
+    html += "<td>" + message.estabelecimento.nome + " - " + message.estabelecimento.endereco.cidade + " (" + message.estabelecimento.tipoEstabelecimento + ")" + "</td>";
+    html += "<td>" + (aprovada?'Aprovada':'Reprovada') +  "</td>";
+    html += "</tr>";
+
+    $("#transacoes-processadas-tbody").prepend(html);
+    countTransacoesProcessadas++;
+    if(countTransacoesProcessadas > 10){
+        $("#transacoes-processadas-tbody tr:last").remove();
+    }
+}
+
+function showTotalAprovadasReprovadas(message) {
     message = JSON.parse(message);
 
     $('#aprovadas-reprovadas-div').show();

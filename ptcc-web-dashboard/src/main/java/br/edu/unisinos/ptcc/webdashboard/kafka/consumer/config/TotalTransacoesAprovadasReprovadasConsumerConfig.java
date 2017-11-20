@@ -15,7 +15,7 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 
 @EnableKafka
 @Configuration
-public class TransacoesAprovadasReprovadasConsumerConfig {
+public class TotalTransacoesAprovadasReprovadasConsumerConfig {
 
     @Value(value = "${kafka.bootstrap-servers}")
     private String bootstrapServers;
@@ -30,7 +30,7 @@ public class TransacoesAprovadasReprovadasConsumerConfig {
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, Long> transacoesAprovadasReprovadasListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, Long> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory("dashboard-transacoes"));
+        factory.setConsumerFactory(consumerFactory("dashboard-transacoes-luis"));
 
         return factory;
     }

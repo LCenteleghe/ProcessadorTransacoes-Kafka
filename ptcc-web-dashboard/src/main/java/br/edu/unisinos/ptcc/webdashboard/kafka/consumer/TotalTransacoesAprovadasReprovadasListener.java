@@ -14,9 +14,9 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TransacoesAprovadasReprovadasListener {
+public class TotalTransacoesAprovadasReprovadasListener {
     
-    private static final Logger LOGGER = LoggerFactory.getLogger(TransacoesAprovadasReprovadasListener.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TotalTransacoesAprovadasReprovadasListener.class);
 
 	@Value(value = "${websocket.mensagens.total-aprovadas-reprovadas}")
 	private String destinationMessagesOut;

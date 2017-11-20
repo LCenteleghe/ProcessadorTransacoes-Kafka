@@ -32,7 +32,9 @@ public class Application {
 		StreamsBuilder builder = new StreamsBuilder();
 		KStream<String, TransacaoCartao> transacoesCartoes = builder.stream("transacoes-cartoes");
 		transacoesCartoes
-				.groupBy((k, v) -> v.getEstabelecimento().getTipoEstabelecimento().name())
+				.groupBy((k, v) -> 
+					v.getEstabelecimento().getTipoEstabelecimento() == null ? "OUTROS" 
+				    :v.getEstabelecimento().getTipoEstabelecimento().name())
 				.aggregate(() -> 0.0, (k, transacao, totalParcial) -> transacao.getValor() + totalParcial, Materialized.with(Serdes.String(), Serdes.Double()))
 				.toStream()
 				.to("valor-transacoes-por-tipo-estabelecimento", Produced.with(Serdes.String(), Serdes.Double()));

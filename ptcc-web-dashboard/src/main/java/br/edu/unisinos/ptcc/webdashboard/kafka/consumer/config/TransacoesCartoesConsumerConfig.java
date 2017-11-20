@@ -35,7 +35,7 @@ public class TransacoesCartoesConsumerConfig {
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, TransacaoCartao> transacoesCartoesListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, TransacaoCartao> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory("dashboard-transacoes"));
+        factory.setConsumerFactory(consumerFactory("dashboard-transacoes-luis"));
 
         return factory;
     }

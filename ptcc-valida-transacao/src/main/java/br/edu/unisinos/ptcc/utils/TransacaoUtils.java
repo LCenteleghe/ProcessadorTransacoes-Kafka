@@ -10,6 +10,11 @@ public class TransacaoUtils {
 
         double valorTransacao = transacao.getValor();
         TipoEstabelecimento tipoEstabelecimento = transacao.getEstabelecimento().getTipoEstabelecimento();
+        
+        if(tipoEstabelecimento == null){
+        	return false;
+        }
+        
         switch (tipoEstabelecimento) {
             case BAR_RESTAURANTE:
                 isTransacaoValida = valorTransacao < 1000;

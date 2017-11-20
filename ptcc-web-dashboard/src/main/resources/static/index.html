@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard Transa��es</title>
+<title>Dashboard Transações</title>
 <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/main.css" rel="stylesheet">
 <script src="/webjars/jquery/jquery.min.js"></script>
@@ -16,7 +16,7 @@
 			<div class="col-md-6">
 				<form class="form-inline">
 					<div class="form-group">
-						<label for="connect">Conexao com o broker:</label>
+						<label for="connect">Conexão com o broker:</label>
 						<button id="connect" class="btn btn-outline-success" type="submit">Conectar</button>
 						<button id="disconnect" class="btn btn-outline-danger"
 							type="submit" disabled="disabled">Desconectar</button>
@@ -26,32 +26,32 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12" id="aprovadas-reprovadas-div">
-				<h3>Totais por Status</h3>
+				<h3>Totais por Situação</h3>
 				<div class="bs-callout bs-callout-success col-md-4">
-					<h4>Total aprovadas</h4>
+					<h4>Transações Aprovadas</h4>
 					<span id="total-aprovadas"></span>
 				</div>
 				<div class="bs-callout bs-callout-danger col-md-4">
-					<h4>Total reprovadas</h4>
+					<h4>Transações Reprovadas</h4>
 					<span id="total-reprovadas"></span>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Totais por Estabelecimento</h3>
+				<h3>Totais por Tipo de Estabelecimento</h3>
 				<div id="totais-div" class="col-md-12"></div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
-				<h3>Transacoes</h3>
+			<div class="col-md-6">
+				<h3>Novas Transações</h3>
 				<table id="transacoes-table"
 					class="table table-striped table-condensed table-bordered table-responsive">
 					<thead>
 						<tr>
-							<th>Codigo</th>
-							<th>Cartao</th>
+							<th>Código</th>
+							<th>Cartão</th>
 							<th>Valor</th>
 							<th>Data</th>
 							<th>Estabelecimento</th>
@@ -60,7 +60,26 @@
 					<tbody id="transacoes-tbody"></tbody>
 				</table>
 			</div>
+			
+			<div class="col-md-6">
+				<h3>Transações Processadas</h3>
+				<table id="transacoes-table"
+					class="table table-striped table-condensed table-bordered table-responsive">
+					<thead>
+						<tr>
+							<th>Código</th>
+							<th>Cartão</th>
+							<th>Valor</th>
+							<th>Data</th>
+							<th>Estabelecimento</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody id="transacoes-processadas-tbody"></tbody>
+				</table>
+			</div>
 		</div>
+
 	</div>
 </body>
 </html>

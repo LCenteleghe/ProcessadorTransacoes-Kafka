@@ -2,17 +2,21 @@ kafka:
   bootstrap-servers: 35.192.50.141:9092,35.199.126.12:9092,35.194.132.53:9092
   topics:
     transacoes-cartoes: transacoes-cartoes
+    transacoes-aprovadas: transacoes-aprovadas
+    transacoes-reprovadas: transacoes-reprovadas
     valor-transacoes-por-tipo-estabelecimento: valor-transacoes-por-tipo-estabelecimento
     total-aprovadas-reprovadas: total-aprovadas-reprovadas
 
 websocket:
   mensagens:
-   novas-transacoes: /dashboard/novas-transacoes
-   valor-transacoes-por-tipo-estabelecimento: /dashboard/valor-transacoes-por-tipo-estabelecimento
-   total-aprovadas-reprovadas: /dashboard/total-aprovadas-reprovadas
+    novas-transacoes: /dashboard/novas-transacoes
+    transacoes-aprovadas: /dashboard/transacoes-aprovadas
+    transacoes-reprovadas: /dashboard/transacoes-reprovadas
+    valor-transacoes-por-tipo-estabelecimento: /dashboard/valor-transacoes-por-tipo-estabelecimento
+    total-aprovadas-reprovadas: /dashboard/total-aprovadas-reprovadas
   broker: /dashboard
   prefix: /app
   endpoint: /dashboard-websocket-endpoint
   
 server:
-  port: 80
+  port: 8080
